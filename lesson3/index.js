@@ -25,5 +25,4 @@ console.log('i:', typeof undefined);
 console.log('j:', typeof Symbol("I'm a Symbol"));
 console.log('k:', typeof { name: 'John' });
 console.log('l:', typeof [1, 2, 3, 4]);
-console.log('m:', typeof
-    function run() {});
+console.log('m:', typeof run());
