@@ -48,6 +48,13 @@ console.log("undefined && null && 0 && '' && null: ", undefined && null && 0 && 
 
 /* оператор отрицания (OR) */
 !true;
+console.log("!true: ", !true);
+
 !false;
+console.log("!false: ", !false);
+
 !'text';
+console.log("!'text': ", !'text');
+
 !!'text';
+console.log("!!'text': ", !!'text');
