@@ -23,13 +23,18 @@ console.log("true && true && true: ", true && true && true);
 
 /* || находит первое истинное значение */
 'text' || false;
+console.log("'text' || false: ", 'text' || false);
+
 true || 'text';
+console.log("true || 'text': ", true || 'text');
+
 undefined || null || 0 || '' || null;
+console.log("undefined || null || 0 || '' || null: ", undefined || null || 0 || '' || null);
 
 const customAmount = null; // не выводим
 const defaultAmount = 17; // не выводим
 const amount = customAmount || defaultAmount; // выводим значкние переменной amount в формате console.log('amount: ', amount);
-
+console.log("amount: ", amount);
 
 /* && находит первое ложное значение */
 'text' && false;
