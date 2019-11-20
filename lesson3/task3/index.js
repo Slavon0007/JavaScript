@@ -74,7 +74,16 @@ console.log("false == 0: ", false == 0);
 /* осторожно c null и undefined */
 
 undefined == null;
+console.log("undefined == null: ", undefined == null);
+
 undefined == 0;
+console.log("undefined == 0: ", undefined == 0);
+
 null == 0;
+console.log("null == 0: ", null == 0);
+
 undefined < 0;
+console.log("undefined < 0: ", undefined < 0);
+
 undefined > 0;
+console.log("undefined > 0: ", undefined > 0);
