@@ -56,10 +56,19 @@ console.log("false === 0: ", false === 0);
 /* нестрогое сравнение */
 
 17 == '17';
+console.log("17 == '17': ", 17 == '17');
+
 '0' == '';
+console.log("'0' == '': ", '0' == '');
+
 0 == '';
+console.log("0 == '': ", 0 == '');
+
 null == undefined;
+console.log("null == undefined: ", null == undefined);
+
 false == 0;
+console.log("false == 0: ", false == 0);
 
 
 /* осторожно c null и undefined */
