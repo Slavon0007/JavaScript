@@ -1,11 +1,11 @@
-function getPrimes(num) {
-    for (let i = 1; i <= num; i++) {
+function getPrimes(n) {
+    for (let i = 1; i <= n; i++) {
         if (prime(i)) console.log(i);
     }
 }
 
-function prime(num) {
-    for (let j = 2; j <= num; j++) {
+function prime(n) {
+    for (let j = 2; j <= n; j++) {
         if (num % j === 0) return false;
     }
     return true;
