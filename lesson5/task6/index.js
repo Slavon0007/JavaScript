@@ -1,12 +1,12 @@
 function getPrimes(num) {
-    for (let i = 2; i <= num; i++) {
-        if (i % num === o) {
-            for (let j = 1; j <= num; j++) {
-                if (j == i) {
-                    console.log(i);
-                }
-            }
-        } else { return false; }
+    for (let i = 1; i <= num; i++) {
+        if (prime(i)) console.log(i);
     }
+}
 
+function prime(num) {
+    for (let j = 2; j <= num; j++) {
+        if (num % j === 0) return false;
+    }
+    return true;
 }
