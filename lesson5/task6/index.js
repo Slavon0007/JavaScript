@@ -1,4 +1,4 @@
-function getNum(num) {
+function getPrimes(num) {
     for (let i = 2; i <= num; i++) {
         if (i % num === o) {
             for (let j = 1; j <= num; j++) {
