@@ -1,4 +1,4 @@
- function increacer(a, index) {
+ function increaser(a, index) {
      if (a > index) {
          return a += index;
      } else {
