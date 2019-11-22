@@ -3,7 +3,7 @@ function squareArray(arr) {
         return null;
     }
     const result = [];
-    for (let i = 1; i < arr.length; i++) {
+    for (const i of arr) {
         result.push(i * i);
     }
     return result;
