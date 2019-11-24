@@ -11,7 +11,18 @@ function uniqueCount(array) {
         }
 
         if (found) {
-            arr.push(array[i]);
+
+            let result = false;
+            for (let x = 0; x < arr.length; x++) {
+
+                if (array[i] === arr[x]) {
+                    result = true;
+                }
+            }
+            if (result === false) {
+                arr.push(array[i]);
+            }
+
         }
     }
     return arr.length;
