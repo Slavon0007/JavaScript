@@ -1,19 +1,9 @@
-function uniqueCount(array) {
-
-
-    const arr = [];
-
+function removeDuplicates(array) {
+    let arr = [];
     for (let i = 0; i < array.length; i++) {
-        let result = false;
-        for (let j = 0; j < arr.length; j++) {
-            if (array[i] === arr[j]) {
-                result = true;
-            }
-        }
-        if (!result) {
+        if (arr.indexOf(array[i]) < 0) {
             arr.push(array[i]);
         }
     }
-
-    return arr.length;
+    return arr;
 }
