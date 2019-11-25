@@ -15,4 +15,4 @@ function checker(arr) {
     } else {
         return false;
     }
-}
+};
