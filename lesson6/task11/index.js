@@ -4,7 +4,7 @@ function checker(arr) {
 
     for (let i = 0; i < array.length; i++) {
         if (arr[i] > max) {
-            max = array[i];
+            max = arr[i];
         }
         if (arr[i] < min) {
             min = arr[i];
