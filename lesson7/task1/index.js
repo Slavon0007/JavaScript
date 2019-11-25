@@ -1,13 +1,5 @@
 function getSpecialNumbers(numbers) {
-    let SpecialNumbers = [];
+    let SpecialNumbers = [...numbers];
 
-    function chekifSpecialNumber(num) {
-        if (nullm % 3 === 0) {
-            SpecialNumbers.push(num);
-        }
-    }
-
-    numbers.forEach(chekifSpecialNumber);
-
-    return specialNumbers;
+    return SpecialNumbers.filter(i => { return i % 3 === 0 });
 }
