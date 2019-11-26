@@ -1,4 +1,4 @@
-const getPeople = obj => Object.entries(obj)
+const getPeople = obj => Object.velues(obj)
     .reduce((acc, elem) => acc.concat(elem), [])
     .map(elem => elem.name);
 
