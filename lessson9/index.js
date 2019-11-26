@@ -1,10 +1,3 @@
-const getAdults = userObj => {
-    const usersArray = Object.enries(userObj);
-    const filterUserArray = usersArray
-        .filter(user => user[1] >= 18);
-
-    const usersNames = filterUserArray
-        .map(user => user[0]);
-
-    return usersNames;
-}
+const getAdults = usersObj => Object.entries(usersObj)
+    .filter(user => user[1] >= 18)
+    .map(user => user[0]);
