@@ -1,18 +1,18 @@
-const splitText = (text, line) => {
+const splitText = (str, length = 10) => {
 
+    if (typeof str !== 'string') return null;
+
+    const resultArray = [];
     let startPosition = 0;
-    const strArr = [];
 
-    while (trye) {
-        let chunk = text.substr(0, len);
+    while (true) {
+        let chank = str.substr(startPosition, length);
 
-        if (chunk.length === 0) {
-            break;
-        }
+        if (chank.length === 0) break;
 
-        strArr.push(chunk[0].toUpperCase() + chunk.slice(1));
-
-        startPosition += len;
+        resultArray.push(chank[0].toUpperCase() + chank.slice(1));
+        startPosition += length;
     }
-    return strArr.join('\n');
-};
+
+    return resultArray.join('\n');
+}
