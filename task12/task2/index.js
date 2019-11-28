@@ -1,7 +1,4 @@
 const reverseString = str => {
-    if (str !== 'string') return null;
-
-    let arr = str.split('').reverse().join('');
-
-    return arr;
+    if (typeof str !== 'string') return null;
+    return str.split('').reverse().join('');
 }
