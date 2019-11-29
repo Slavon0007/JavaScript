@@ -16,5 +16,9 @@
   },
   "homepage": "https://github.com/Slavon0007/JavaScript#readme",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4"
+  }
 }
