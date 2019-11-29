@@ -1,4 +1,4 @@
- export const calc = expression => {
+ const calc = expression => {
      const [a, operator, b] = expression.split(' ');
      let result;
 

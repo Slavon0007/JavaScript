@@ -1,7 +1,7 @@
 import { calc } from './calculator';
 
 it('should  work correctly with operator "+"', () => {
-    const result = calc(5 + 5);
+    const result = calc('5 + 5');
 
     expect(result).toEqual('5 + 5 = 10');
 });
