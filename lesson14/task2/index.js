@@ -20,3 +20,4 @@ function createMessenger() {
         setSender,
     }
 }
+export default createMessenger;
