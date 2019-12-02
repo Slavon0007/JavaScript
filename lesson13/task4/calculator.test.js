@@ -23,3 +23,8 @@ it('should work correctly with operator "/"', () => {
 
     expect(result).toEqual('10 / 5 = 2');
 });
+it('should get null', () => {
+    const result = calc(5);
+
+    expect(result).toEqual(null);
+});
