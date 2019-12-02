@@ -1,9 +1,9 @@
-let massage = 'Jst learn it';
+let message = 'Just learn it!';
 
-function sendMessage(name) {
-    console.log(`${name}, ${message} Your Gromcode `);
+export function sendMessage(name) {
+    console.log(`${name}, ${message} Your Gromcode`);
 }
 
-function setMessage(text) {
-    massage = text;
+export function setMessage(text) {
+    message = text;
 }
