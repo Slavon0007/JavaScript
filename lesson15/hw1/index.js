@@ -19,4 +19,6 @@ function createCalculator() {
             return result;
         },
     };
+
 }
+export { createCalculator };
