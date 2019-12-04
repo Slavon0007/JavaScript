@@ -5,7 +5,7 @@ const timer = {
     getTime() {
         return `${this.minsPassed}:${this.secondsPassed < 10 ? '0' + this.secondsPassed : this.secondsPassed}`;
     },
-    startsTimer() {
+    startTimer() {
         this.intervalId = setInterval(() => {
             this.secondsPassed += 5
             if (this.secondsPassed === 60) {
