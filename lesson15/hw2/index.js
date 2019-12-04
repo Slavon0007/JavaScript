@@ -2,11 +2,11 @@ export function createLogger() {
     let logger = [];
 
     return {
-        warm: function(str) {
+        warn: function(str) {
             logger.push({
                 message: str,
                 dateTime: new Date(),
-                type: 'warm'
+                type: 'warning'
             });
         },
         error: function(str) {
