@@ -6,7 +6,7 @@ const user = {
         return this.firstName + ' ' + this.lastName;
     },
 
-    getFullName(fullName) {
+    setFullName(fullName) {
         let [a, b] = fullName.split(' ');
         this.firstName = a;
         this.lastName = b;
