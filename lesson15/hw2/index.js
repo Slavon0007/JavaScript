@@ -6,21 +6,21 @@ export function createLogger() {
             logger.push({
                 message: str,
                 dateTime: new Date(),
-                type: 'warning'
+                type: 'warn',
             });
         },
         error: function(str) {
             logger.push({
                 message: str,
                 dateTime: new Date(),
-                type: 'error'
+                type: 'error',
             });
         },
         log: function(str) {
             logger.push({
                 message: str,
                 dateTime: new Date(),
-                type: 'log'
+                type: 'log',
             });
         },
         getRecords: function(str) {
