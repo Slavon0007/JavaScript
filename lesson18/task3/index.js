@@ -1,6 +1,6 @@
 function sumOfSquares(...args) {
     return args.reduce((acc, el) => {
-        return acc += el * 2;
+        return acc += el ** 2;
     }, 0);
 }
 
