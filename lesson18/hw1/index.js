@@ -1,15 +1,14 @@
- function spy(func) {
+function spy(func) {
 
-     function wrapper(...args) {
+    function wrapper(...args) {
+        wrapper.calls.push(args);
+        return func.apply(this, arguments);
+    }
 
-         wrapper.calls.push(args);
-         return func.calls(this, args);
+    wrapper.calls = [];
 
-     }
+    return wrapper;
+};
 
-     wrapper.calls = [];
 
-     return wrapper;
- }
-
- export { spy };
+export { spy }
