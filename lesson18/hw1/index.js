@@ -2,10 +2,12 @@
 
      function wrapper(...args) {
 
-         wrapper.calls.push(...args);
+         wrapper.calls.push(args);
          return func.calls(this, args);
 
      }
+
+     wrapper.calls = [];
 
      return wrapper;
  }
