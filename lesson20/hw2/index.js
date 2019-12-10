@@ -14,6 +14,9 @@ export class User {
     get sessionId() {
         return this._sessionId;
     }
+    get users() {
+        return this._users;
+    }
 }
 
 export class UserRepository {
