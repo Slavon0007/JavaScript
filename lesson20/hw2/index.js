@@ -1,20 +1,20 @@
 export class User {
 
     constructor(id, name, sessionId) {
-        this.id = `${id}`;
-        this.name = `${name}`;
-        this.sessionId = `${sessionId}`;
+        this._id = id;
+        this._name = name;
+        this._sessionId = sessionId;
     }
     get id() {
-        return this.id;
+        return this._id;
     }
     get name() {
-        return this.name;
+        return this._name;
     }
     get sessionId() {
-        return this.sessionId;
+        return this._sessionId;
     }
-};
+}
 
 export class UserRepository {
 
@@ -22,8 +22,10 @@ export class UserRepository {
         this._users = Object.freeze(array);
     }
 
+
     getUserNames() {
         return this._users.map(i => i.name);
+
     }
 
     getUserIds() {
