@@ -24,7 +24,11 @@ class Order {
 
     }
     isValidType() {
-        if (this.type == 'Buy' && this.type == 'Sell') return true;
+        if (this.type == 'Buy' || this.type == 'Sell') return true;
         return false;
     }
 }
+
+export {
+    Order
+};
