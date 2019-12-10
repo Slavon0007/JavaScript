@@ -33,7 +33,7 @@ export class UserRepository {
     }
 
     getUserNameById(id) {
-        const user = this._users.find(i => i.id === id)
+        const user = this._users.filter(i => i.id === id)
             .map(i => i.name)[0];
         return user;
     }
