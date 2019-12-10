@@ -1,25 +1,20 @@
-class Vechicle {
+class Vehicle {
 
     constructor(name, numberOfWheels) {
-
         this.name = name;
         this.numberOfWheels = numberOfWheels;
     }
 
     move() {
-
-        console.log(`${this.name} is moving `);
-
+        console.log(`${this.name} is moving`);
     }
 
-    stope() {
-
+    stop() {
         console.log(`${this.name} stopped`);
-
     }
-}
+};
 
-class Ship extends Vechicle {
+class Ship extends Vehicle {
 
     constructor(name, numberOfWheels, maxSpeed) {
         super(name, numberOfWheels);
@@ -27,20 +22,17 @@ class Ship extends Vechicle {
     }
 
     move() {
-
         console.log(`${this.name} lifting anchor up`);
         super.move();
     }
 
     stop() {
-
-        console.log(`${this.name} lifting anchor down`);
-        super.stop();
+        super.stop(),
+            console.log(`${this.name} lifting anchor down`);
     }
-}
+};
 
 export {
-
-    Vechicle,
-    ship
-}
+    Vehicle,
+    Ship
+};
