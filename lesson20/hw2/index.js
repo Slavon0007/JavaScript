@@ -14,15 +14,16 @@ export class User {
     get sessionId() {
         return this._sessionId;
     }
-    get users() {
-        return this._users;
-    }
+
 }
 
 export class UserRepository {
 
     constructor(users) {
         this._users = Object.freeze(users);
+    }
+    get users() {
+        return this._users;
     }
 
 
