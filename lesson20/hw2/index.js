@@ -18,8 +18,8 @@ export class User {
 
 export class UserRepository {
 
-    constructor(array) {
-        this._users = Object.freeze(array);
+    constructor(users) {
+        this._users = Object.freeze(users);
     }
 
 
