@@ -49,32 +49,38 @@ const renderListItems = listItems => {
 
     const result = undoneItemsElems.concat(doneItemsElems);
     const listItemsElems = result
+
         .map(({ text, done, date }) => {
-            const listItemElem = document.createElement('li');
-            listItemElem.classList.add('list__item');
-            if (done) {
-                listItemElem.classList.add('list__item_done');
-            }
-            const checkboxElem = document.createElement('input');
-            checkboxElem.setAttribute('type', 'checkbox');
-            checkboxElem.setAttribute('id', date);
-            checkboxElem.checked = done;
-            checkboxElem.classList.add('list__item-checkbox');
-            listItemElem.append(checkboxElem, text);
-            checkboxElem.onclick = function() {
-                const id = this.id;
-                const task = tasks.find(t => t.date == id);
-                task.done = this.checked;
-                renderListItems(tasks);
-                return true;
-            };
 
-            return listItemElem;
+        const listItemElem = document.createElement('li');
+        listItemElem.classList.add('list__item');
+        if (done) {
 
-        });
+            listItemElem.classList.add('list__item_done');
+
+        }
+        const checkboxElem = document.createElement('input');
+        checkboxElem.setAttribute('type', 'checkbox');
+        checkboxElem.setAttribute('id', date);
+        checkboxElem.checked = done;
+        checkboxElem.classList.add('list__item-checkbox');
+        listItemElem.append(checkboxElem, text);
+        checkboxElem.onclick = onDoneClick;
+        return listItemElem;
+
+    });
     listElem.append(...listItemsElems);
 
 };
+
+function onDoneClick() {
+    const id = this.id;
+    const task = tasks.find(t => t.date == id);
+    task.done = this.checked;
+    renderListItems(tasks);
+    return true;
+}
+
 renderListItems(tasks);
 
 const button = document.getElementById('add-btn');
