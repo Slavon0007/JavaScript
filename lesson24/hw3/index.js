@@ -2,15 +2,15 @@ var index = 0;
 
 const tasks = [
 
-    { text: 'Buy milk', done: false, date: Date.now() + index++ },
+    { text: 'Buy milk', done: false, createDate: Date.now() + index++ },
 
-    { text: 'Pick up Tom from airport', done: false, date: Date.now() + index++ },
+    { text: 'Pick up Tom from airport', done: false, createDate: Date.now() + index++ },
 
-    { text: 'Visit party', done: false, date: Date.now() + index++ },
+    { text: 'Visit party', done: false, createDate: Date.now() + index++ },
 
-    { text: 'Visit doctor', done: true, date: Date.now() + index++ },
+    { text: 'Visit doctor', done: true, createDate: Date.now() + index++ },
 
-    { text: 'Buy meat', done: true, date: Date.now() + index++ },
+    { text: 'Buy meat', done: true, createDate: Date.now() + index++ },
 
 ];
 const onAddClick = function() {
@@ -24,7 +24,7 @@ const onAddClick = function() {
 
         text: taskName.value,
         done: false,
-        date: Date.now()
+        createDate: Date.now()
 
     };
     tasks.push(task);
@@ -42,15 +42,18 @@ const renderListItems = listItems => {
 
     listElem.innerHTML = '';
 
+
+
     const undoneItemsElems = listItems.filter(x => x.done == false)
-        .sort((a, b) => b.date - a.date);
+        .sort((a, b) => b.createDate - a.createDate);
+
     const doneItemsElems = listItems.filter(x => x.done == true)
-        .sort((a, b) => b.date - a.date);
+        .sort((a, b) => b.createDate - a.createDate);
 
     const result = undoneItemsElems.concat(doneItemsElems);
     const listItemsElems = result
 
-        .map(({ text, done, date }) => {
+        .map(({ text, done, createDate }) => {
 
         const listItemElem = document.createElement('li');
         listItemElem.classList.add('list__item');
@@ -61,7 +64,7 @@ const renderListItems = listItems => {
         }
         const checkboxElem = document.createElement('input');
         checkboxElem.setAttribute('type', 'checkbox');
-        checkboxElem.setAttribute('id', date);
+        checkboxElem.setAttribute('id', createDate);
         checkboxElem.checked = done;
         checkboxElem.classList.add('list__item-checkbox');
         listItemElem.append(checkboxElem, text);
@@ -75,8 +78,9 @@ const renderListItems = listItems => {
 
 function onDoneClick() {
     const id = this.id;
-    const task = tasks.find(t => t.date == id);
+    const task = tasks.find(t => t.createDate == id);
     task.done = this.checked;
+    task.createDate = Date.now();
     renderListItems(tasks);
     return true;
 }
