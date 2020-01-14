@@ -1,26 +1,25 @@
-const calc = initVelue => {
-    let result = initVelue;
-
+export const calc = value => {
+    let result = value;
     const calculator = {
-        add(velue) {
-            result += velue;
-            return calculator;
+        add(number) {
+            result += number;
+            return this;
         },
-        mult(velue) {
-            result *= velue;
-            return calculator;
+        subtract(number) {
+            result -= number;
+            return this;
         },
-        substract(velue) {
-            result -= velue;
-            return calculator;
+        mult(number) {
+            result *= number;
+            return this;
         },
-        div(velue) {
-            result /= velue;
-            return calculator;
+        div(number) {
+            result /= number;
+            return this;
         },
         result() {
             return result;
         },
     };
     return calculator;
-}
+};
