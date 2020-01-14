@@ -7,7 +7,7 @@ export const maxFibonacci = value => {
     let maxFib = 0;
     while (true) {
         let fib = fibonacci(index);
-        if (fib > value) {
+        if (fib <= value) {
             maxFib = fib;
             index++;
         } else return maxFib;
