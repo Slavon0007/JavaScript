@@ -4,7 +4,7 @@ const half = value => value / 2;
 
 
 
-const compose = (...funcs) => velue => {
+export const compose = (...funcs) => velue => {
     return funcs.reduce((acc, func) => func(acc), velue);
 };
 
