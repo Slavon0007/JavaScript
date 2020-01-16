@@ -1,6 +1,6 @@
-function delay(delay, callback, context, arg1, arg2, arg3, ...args) {
+function delay(delay, callback, context, ...args) {
     setTimeout(() => {
-        callback.bind(context)(...args);
+        callback.applt(context, args);
     }, delay);
 };
 
