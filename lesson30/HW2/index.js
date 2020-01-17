@@ -1,4 +1,4 @@
-import { addImage } from './index.js';
+import { addImage } from './addImage';
 
 
 export const addImageV2 = imgSrc => {
