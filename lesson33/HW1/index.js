@@ -36,7 +36,6 @@ const forGetUserObject = () => {
 };
 showUserBtnElem.addEventListener('click', forGetUserObject);
 
-
 export const getMostActiveDevs = ({ userId, repoId, days }) => {
     const object = { userId, repoId, days };
     let maxCount = 0;
@@ -44,23 +43,19 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
     fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
         .then(response => response.json())
         .then(array => {
-            return array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date })
-                    // elem => {
-                    // return {
-                    //     name: elem.commit.author.name,
-                    //     email: elem.commit.author.email,
-                    //     date: new Date(elem.commit.author.date),
-                    // };
-                    // }
-                )
-                .filter(elem => elem.date > startDate)
-                .reduce((acc, { email, name }) => {
-                    const oldCount = acc[email] ? acc[email].count : 0;
-                    return {
-                        ...acc,
-                        [email]: { name, email, count: oldCount + 1 }
-                    };
-                }, {})
+            let result = array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date }));
+
+            let result1 = result.filter(elem => new Date(elem.date) > startDate);
+            let result2 = result1.reduce((acc, { email, name }) => {
+                const oldCount = acc[email] ? acc[email].count : 0;
+                return {
+                    ...acc,
+                    [email]: { name, email, count: oldCount + 1 }
+                };
+            }, {})
+
+            return result2;
+
         })
         .then(obj => {
             const arr = Object.values(obj);
@@ -75,9 +70,6 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
             console.log(res);
         });
 
-
-
-
-
-
 }
+
+//getMostActiveDevs('Slavon0007', 'JavaScript', 2);
