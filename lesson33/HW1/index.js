@@ -63,13 +63,4 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
             return arr.filter(elem => elem.count === maxCount);
         })
 
-    .then(res => {
-        console.log(res);
-    });
-
-
-
-
-
-
-}
+};
