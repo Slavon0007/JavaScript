@@ -41,36 +41,43 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
     const object = { userId, repoId, days };
     let maxCount = 0;
     const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
-    return fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
+    fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
         .then(response => response.json())
-        .then(fullArray => {
-            const filteredDateArray = fullArray
-                .map(elem => {
-                    return {
-                        name: elem.commit.author.name,
-                        email: elem.commit.author.email,
-                        date: new Date(elem.commit.author.date),
-                    };
-                })
+        .then(array => {
+            return array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date })
+                    // elem => {
+                    // return {
+                    //     name: elem.commit.author.name,
+                    //     email: elem.commit.author.email,
+                    //     date: new Date(elem.commit.author.date),
+                    // };
+                    // }
+                )
                 .filter(elem => elem.date > startDate)
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .reduce((acc, elem, index, array) => {
-                    let count = 0;
-                    array.forEach(element => {
-                        if (elem.name === element.name) count++;
-                    });
-                    array.splice(0, count - 1);
-                    acc.push({
-                        count: count,
-                        name: elem.name,
-                        email: elem.email,
-                    });
-                    return acc;
-                }, []);
-            filteredDateArray.forEach(elem => {
-                if (elem.count > maxCount) maxCount = elem.count;
-            });
-            return filteredDateArray
-                .filter(elem => elem.count === maxCount);
+                .reduce((acc, { email, name }) => {
+                    const oldCount = acc[email] ? acc[email].count : 0;
+                    return {
+                        ...acc,
+                        [email]: { name, email, count: oldCount + 1 }
+                    };
+                }, {})
+        })
+        .then(obj => {
+            const arr = Object.values(obj);
+            arr.forEach(elem => {
+                if (elem.count > maxCount) {
+                    maxCount = elem.count
+                }
+            })
+            return arr.filter(elem => elem.count === maxCount)
+        })
+        .then(res => {
+            console.log(res);
         });
-};
+
+
+
+
+
+
+}
