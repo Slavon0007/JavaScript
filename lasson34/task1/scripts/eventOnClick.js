@@ -30,7 +30,7 @@ export const onAddClick = function() {
 
     taskName.value = '';
 
-}
+};
 
 
 export function onDoneClick() {
@@ -56,10 +56,14 @@ const updatedTask = {
     createDate,
     done,
     finishDate: done ?
-        new Date().toISOString() :
-        null
+        new Date().toISOString() : null
 };
-updatedTask(taskId, updatedTask);
+updatedTask(taskId, updatedTask)
+    .then(() => getTasksLIst())
+    .then(tasks => {
+        setItem('tasks', tasks);
+        renderListItems();
+    });
 
 
 // подгатовили данные

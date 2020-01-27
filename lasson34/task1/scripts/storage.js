@@ -10,16 +10,15 @@ export const getItem = key => JSON.parse(localStorage.getItem(key));
 
 
 document.addEventListener('DOMContentLOader', () => {
+    getTasksLIst()
+        .then(tasks => {
+            setItem('tasks', tasks);
+            renderListItems();
+        });
     renderListItems();
-})
+});
 
 const onStorageChange = e => {
     if (e.key === 'tasks') renderListItems();
 };
 window.addEventListener('storage', onStorageChange);
-
-getTasksLIst()
-    .then(tasksList => {
-        setItem('tasks', tasksList);
-        renderListItems();
-    });
