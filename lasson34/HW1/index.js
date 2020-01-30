@@ -14,8 +14,7 @@ function validateFields() {
     } else {
         btnElem.disabled = true;
     }
-    errorTextElem.textContent = '';
-    console.log(form);
+    errorTextElem.textContent = ' ';
 };
 
 function submitData(event) {
