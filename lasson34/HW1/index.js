@@ -1,35 +1,47 @@
 const Url = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
 
-const emailInputElem = document.querySelector('#email');
-const passwordInputElem = document.querySelector('#password');
-const nameInputElem = document.querySelector('#name');
-const btnElem = document.querySelector('.submit-button');
-const form = document.forms[0];
-const inputs = [...document.querySelectorAll('input')];
+const emailInput = document.querySelector('#email');
+const passdInput = document.querySelector('#password');
+const nameInput = document.querySelector('#name');
+const btn = document.querySelector('.submit-button');
+// const form = document.forms[0];
+// const inputs = [...document.querySelectorAll('input')];
 const errorTextElem = document.querySelector('.error-text');
 
 form.addEventListener('input', validateFields);
 form.addEventListener('submit', submitData);
 
 
-const pEmail = document.createElement('p');
-const pPassword = document.createElement('p');
-const pName = document.createElement('p');
-const pErrorText = document.createElement('p');
-errorTextElem.append(pEmail, pName, pPassword, pErrorText);
+const email = document.createElement('p');
+const pass = document.createElement('p');
+const name = document.createElement('p');
+const error = document.createElement('p');
+errorTextElem.append(email, name, pass, error);
+
+
+// function validateFields() {
+//     if (form.reportValidity()) {
+//         btnElem.disabled = false;
+//     } else {
+//         btnElem.disabled = true;
+//     }
+// errorTextElem.append.textContent = 'isRequiredEmail';
+// errorTextElem.append.textContent = 'isRequiredName';
+// errorTextElem.append.textContent = 'isRequiredPassword';
+// };
 
 const reportValidity = () => {
-    const emailP = pEmail.textContent;
-    const nameP = pName.textContent;
-    const passwordP = pPassword.textContent;
-    if (emailP || nameP || passwordP) {
-        btnElem.setAttribute('disabled', 'disabled');
+    const emailInput = email.textContent;
+    const nameP = name.textContent;
+    const passwordP = pass.textContent;
+    if (emailInput || nameP || passwordP) {
+        btn.setAttribute('disabled', 'disabled');
     }
-    if (!emailP && !nameP && !passwordP) {
-        btnElem.removeAttribute('disabled');
+    if (!emailInput && !nameP && !passwordP) {
+        btn.removeAttribute('disabled');
     }
-    if (emailInputElem.value === '' || nameInputElem.value === '' || passwordInputElem.value === '') {
-        btnElem.setAttribute('disabled', 'disabled');
+    if (emailInput.value === '' || nameInput.value === '' || passdInput.value === '') {
+        btn.setAttribute('disabled', 'disabled');
     }
 };
 reportValidity();
@@ -54,45 +66,39 @@ const validate = (fieldName, value) => {
         .join('');
 };
 const onInputChange = event => {
-    pErrorText.textContent = '';
+    error.textContent = '';
     const typeOfInput = event.target.name;
     const errorText = validate(typeOfInput, event.target.value);
-    pPassword.textContent = errorText;
+    pass.textContent = errorText;
     reportValidity();
 };
-nameInputElem.addEventListener('input', onInputChange);
-emailInputElem.addEventListener('input', onInputChange);
-passwordInputElem.addEventListener('input', onInputChange);
+nameInput.addEventListener('input', onInputChange);
+emailInput.addEventListener('input', onInputChange);
+passdInput.addEventListener('input', onInputChange);
 
-function validateFields() {
-    if (form.reportValidity()) {
-        btnElem.disabled = false;
-    } else {
-        btnElem.disabled = true;
-    }
-};
 
-function submitData(event) {
-    event.preventDefault();
-    const newUser = [...new FormData(form)]
-        .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
 
-    fetch(Url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(newUser),
-        })
-        .then(response => response.json())
-        .then(data => {
-            inputs.map(elem => elem.value = '');
-            btnElem.disabled = true;
-            alert(JSON.stringify(data));
-        })
-        .catch(error => {
-            errorText.textContent = 'Failed to create user';
-            return new Error(console.log(`${error}`));
-        });
+// function submitData(event) {
+//     event.preventDefault();
+//     const newUser = [...new FormData(form)]
+//         .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
+
+//     fetch(Url, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json;charset=utf-8',
+//             },
+//             body: JSON.stringify(newUser),
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             inputs.map(elem => elem.value = '');
+//             btnElem.disabled = true;
+//             alert(JSON.stringify(data));
+//         })
+//         .catch(error => {
+//             errorText.textContent = 'Failed to create user';
+//             return new Error(console.log(`${error}`));
+//         });
 
 };
