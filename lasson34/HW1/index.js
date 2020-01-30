@@ -1,6 +1,6 @@
-const baseUrl = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
+const Url = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
 
-const submitBtnElem = document.querySelector('.submit-button');
+const btnElem = document.querySelector('.submit-button');
 const form = document.forms[0];
 const inputs = [...document.querySelectorAll('input')];
 const errorTextElem = document.querySelector('.error-text');
@@ -10,11 +10,12 @@ form.addEventListener('submit', submitData);
 
 function validateFields() {
     if (form.reportValidity()) {
-        submitBtnElem.disabled = false;
+        btnElem.disabled = false;
     } else {
-        submitBtnElem.disabled = true;
+        btnElem.disabled = true;
     }
     errorTextElem.textContent = '';
+    console.log(form);
 };
 
 function submitData(event) {
@@ -22,7 +23,7 @@ function submitData(event) {
     const newUser = [...new FormData(form)]
         .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
 
-    fetch(baseUrl, {
+    fetch(Url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -32,11 +33,12 @@ function submitData(event) {
         .then(response => response.json())
         .then(data => {
             inputs.map(elem => elem.value = '');
-            submitBtnElem.disabled = true;
+            btnElem.disabled = true;
             alert(JSON.stringify(data));
         })
         .catch(error => {
             errorText.textContent = 'Failed to create user';
             return new Error(console.log(`${error}`));
         });
+
 };
