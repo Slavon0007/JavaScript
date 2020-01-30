@@ -123,14 +123,13 @@ const onFormSubmit = event => {
             },
             body: JSON.stringify(formData),
 
-        }).then(() => {
+        }).then(response => {
+
             emailInput.value = '';
             nameInput.value = '';
             passwordInput.value = '';
-            return fetch(baseUrl)
-                .then(response =>
-                    alert(JSON.stringify(response))
-                );
+
+            alert(JSON.stringify(response.json()));
 
         })
         .catch(error => {
