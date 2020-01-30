@@ -128,7 +128,11 @@ const onFormSubmit = event => {
             return fetch(baseUrl)
                 .then(response => response.json())
                 .then(array => {
-                    alert(JSON.stringify(array));
+                    let obj = array.reduce(function(acc, cur, i) {
+                        acc[i] = cur;
+                        return acc;
+                    }, {});
+                    alert(JSON.stringify(obj));
                 });
         })
         .catch(error => {
