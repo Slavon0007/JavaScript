@@ -115,7 +115,7 @@ const onFormSubmit = event => {
     event.preventDefault();
     const formData = [...new FormData(formElem)]
         .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
-    // const email = formData.email;
+    const email = formData.email;
     return fetch(baseUrl, {
             method: 'POST',
             headers: {
@@ -128,11 +128,10 @@ const onFormSubmit = event => {
             nameInput.value = '';
             passwordInput.value = '';
             return fetch(baseUrl)
-                .then(response => response.json())
-                .then(array => {
-                    //        const obj = array.find(elem => elem.email === email);
-                    alert(JSON.stringify(array));
-                });
+                .then(response =>
+                    alert(JSON.stringify(response))
+                );
+
         })
         .catch(error => {
             errText.textContent = 'Failed to create user';
