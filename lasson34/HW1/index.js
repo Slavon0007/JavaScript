@@ -1,22 +1,24 @@
-const Url = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
+const baseUrl = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
+
+
 
 const emailInput = document.querySelector('#email');
-const passdInput = document.querySelector('#password');
+const passwordInput = document.querySelector('#password');
 const nameInput = document.querySelector('#name');
 const btn = document.querySelector('.submit-button');
-// const form = document.forms[0];
-// const inputs = [...document.querySelectorAll('input')];
-const errorTextElem = document.querySelector('.error-text');
-
-form.addEventListener('input', validateFields);
-form.addEventListener('submit', submitData);
-
+const errorElem = document.querySelector('.error-text');
 
 const email = document.createElement('p');
-const pass = document.createElement('p');
+const password = document.createElement('p');
 const name = document.createElement('p');
-const error = document.createElement('p');
-errorTextElem.append(email, name, pass, error);
+const errText = document.createElement('p');
+errorElem.append(email, name, password, errText);
+
+
+// const form = document.forms[0];
+// const inputs = [...document.querySelectorAll('input')];
+// form.addEventListener('input', validateFields);
+// form.addEventListener('submit', submitData);
 
 
 // function validateFields() {
@@ -30,21 +32,25 @@ errorTextElem.append(email, name, pass, error);
 // errorTextElem.append.textContent = 'isRequiredPassword';
 // };
 
+
+
+
 const reportValidity = () => {
-    const emailInput = email.textContent;
-    const nameP = name.textContent;
-    const passwordP = pass.textContent;
-    if (emailInput || nameP || passwordP) {
+    const em = email.textContent;
+    const nam = name.textContent;
+    const pass = password.textContent;
+    if (em || nam || pass) {
         btn.setAttribute('disabled', 'disabled');
     }
-    if (!emailInput && !nameP && !passwordP) {
+    if (!em && !nam && !pass) {
         btn.removeAttribute('disabled');
     }
-    if (emailInput.value === '' || nameInput.value === '' || passdInput.value === '') {
+    if (emailInput.value === '' || nameInput.value === '' || passwordInput.value === '') {
         btn.setAttribute('disabled', 'disabled');
     }
 };
 reportValidity();
+
 
 const isRequiredPassword = value => value ? undefined : 'Required password';
 
@@ -58,23 +64,27 @@ const validatorsByFields = {
     password: [isRequiredPassword],
     name: [isRequiredName],
 };
+
 const validate = (fieldName, value) => {
-    const validators = validatorsByFields[fieldName];
-    return validators
-        .map(validator => validator(value))
+    const working = validatorsByFields[fieldName];
+    return working
+        .map(valid => valid(value))
         .filter(errorText => errorText)
         .join('');
 };
-const onInputChange = event => {
-    error.textContent = '';
+
+const editing = event => {
+    errText.textContent = '';
     const typeOfInput = event.target.name;
     const errorText = validate(typeOfInput, event.target.value);
-    pass.textContent = errorText;
+    password.textContent = errorText;
     reportValidity();
 };
-nameInput.addEventListener('input', onInputChange);
-emailInput.addEventListener('input', onInputChange);
-passdInput.addEventListener('input', onInputChange);
+nameInput.addEventListener('input', editing);
+emailInput.addEventListener('input', editing);
+passwordInput.addEventListener('input', editing);
+
+
 
 
 
@@ -100,5 +110,30 @@ passdInput.addEventListener('input', onInputChange);
 //             errorText.textContent = 'Failed to create user';
 //             return new Error(console.log(`${error}`));
 //         });
-
+const formElem = document.querySelector('.login-form');
+const onFormSubmit = event => {
+    event.preventDefault();
+    const formData = [...new FormData(formElem)]
+        .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
+    return fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(formData),
+        }).then(() => {
+            emailInput.value = '';
+            nameInput.value = '';
+            passwordInput.value = '';
+            return fetch(baseUrl)
+                .then(response => response.json())
+                .then(array => {
+                    alert(JSON.stringify(array));
+                });
+        })
+        .catch(error => {
+            errText.textContent = 'Failed to create user';
+            return new Error(console.log(`${error}`));
+        });
 };
+formElem.addEventListener('submit', onFormSubmit);
