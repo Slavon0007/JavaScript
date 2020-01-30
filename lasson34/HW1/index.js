@@ -129,7 +129,7 @@ const onFormSubmit = event => {
             nameInput.value = '';
             passwordInput.value = '';
 
-            alert(JSON.stringify(response.json()));
+            alert(JSON.stringify(response));
 
         })
         .catch(error => {
