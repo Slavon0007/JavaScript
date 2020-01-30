@@ -1,4 +1,4 @@
-const baseUrl = 'https://crudcrud.com/api/150d8b1d323c4bacb81a46af6715298f/tasks';
+const baseUrl = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/task';
 
 
 export const getTasksLIst = () => {
