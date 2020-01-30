@@ -1,11 +1,12 @@
-const baseUrl = 'https://crudcrud.com/api/150d8b1d323c4bacb81a46af6715298f/users';
+const baseUrl = 'https://crudcrud.com/api/cfdbd8cb8ba84fa98d2f16f6cdd5b7ab/users';
 
 const submitBtnElem = document.querySelector('.submit-button');
 const form = document.forms[0];
 const inputs = [...document.querySelectorAll('input')];
 const errorTextElem = document.querySelector('.error-text');
 
-
+form.addEventListener('input', validateFields);
+form.addEventListener('submit', submitData);
 
 function validateFields() {
     if (form.reportValidity()) {
@@ -34,5 +35,8 @@ function submitData(event) {
             submitBtnElem.disabled = true;
             alert(JSON.stringify(data));
         })
-
+        .catch(error => {
+            errorText.textContent = 'Failed to create user';
+            return new Error(console.log(`${error}`));
+        });
 };
