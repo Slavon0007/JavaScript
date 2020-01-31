@@ -25,7 +25,8 @@ export const onAddClick = function() {
         .then(tasks => {
             setItem('tasks', tasks);
             renderListItems();
-        });
+        })
+        .catch(error => alert(error));
 
 
     taskName.value = '';
