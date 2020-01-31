@@ -13,7 +13,14 @@ export const createTask = taskData =>
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(taskData)
+<<<<<<< HEAD
     });;
+=======
+    }).then(response => {
+        console.log(response);
+    });
+};
+>>>>>>> 770ecd61c019ba4fed1cec1d45e3a6fbc2cd3a2e
 export const updateTask = (taskId, updateTaskData) => {
     return fetch(`${baseUrl}/${taskId}`, {
         method: 'PUT',
@@ -22,5 +29,9 @@ export const updateTask = (taskId, updateTaskData) => {
         },
         body: JSON.stringify(updateTaskData)
     });
+<<<<<<< HEAD
 
 };
+=======
+};
+>>>>>>> 770ecd61c019ba4fed1cec1d45e3a6fbc2cd3a2e
