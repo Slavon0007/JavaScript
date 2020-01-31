@@ -13,6 +13,8 @@ export const createTask = taskData => {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(taskData)
+    }).then(response => {
+        console.log(response);
     });
 };
 export const updateTask = (taskId, updateTaskData) => {
