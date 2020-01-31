@@ -22,4 +22,5 @@ export const updateTask = (taskId, updateTaskData) => {
         },
         body: JSON.stringify(updateTaskData)
     });
+
 };
