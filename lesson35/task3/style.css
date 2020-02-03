@@ -1,0 +1,102 @@
+.page {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+
+.user__info {
+    text-align: center;
+    font-size: 24px;
+    margin: 32px;
+}
+
+.user__avatar {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+}
+
+.user__name {
+    font-weight: 700;
+}
+
+.user__location {}
+
+.name-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.name-form__input {
+    height: 30px;
+    border: 6px solid lightgrey;
+    border-radius: 8px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.name-form__btn {
+    border: 6px solid lightgrey;
+    border-radius: 8px;
+    background: #fff;
+    outline: none;
+}
+
+.repo-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 600px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.repo-list__item {
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 32px;
+    border-radius: 4px;
+    border: 2px solid grey;
+    background-color: coral;
+    font-weight: 700;
+    margin: 8px;
+    padding: 4px;
+    line-height: 32px;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: block;
+    margin: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 4px solid #000;
+    border-bottom-color: transparent;
+    animation: rotate 1s linear infinite;
+}
+
+.spinner_hidden {
+    display: none;
+}
