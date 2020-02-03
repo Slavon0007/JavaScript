@@ -1,10 +1,12 @@
-const getUserBlo = userId => fetch(`https://api.github.com/users/${userId}`)
+const getUserBlog = userId => fetch(`https://api.github.com/users/${userId}`)
     .then(response => response.json());
-getUsersBlogs = async arrOfUsersId => {
+
+
+export const getUsersBlogs = async arrOfUsersId => {
     const q = arrOfUsersId.reduce((acc, user) => {
         return [
             ...acc,
-            getUserBlo(user),
+            getUserBlog(user),
         ]
     }, []);
 
