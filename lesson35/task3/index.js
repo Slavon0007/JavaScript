@@ -31,11 +31,12 @@ const onSerchUser = () => {
         .then(url => fetchRepositories(url))
         .then(reposList => {
             renderRepos(reposList);
-            hideSpinner();
         })
         .catch(err => {
-            hideSpinner();
             alert(err.massage);
+        })
+        .finally(() => {
+            hideSpinner();
         });
 };
 
