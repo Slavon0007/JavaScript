@@ -1,22 +1,19 @@
-import { renderUserData, fetchRepositories } from "./user";
-import { fetchUserData } from "./geteways";
-import { renderRepos, cleanRepoList } from "./repos.js";
-import { showSpinner, hideSpinner } from "./spiner.js";
+import { renderUserData } from './user.js';
+import { fetchUserData, fetchRepositories } from './gateways.js';
+import { renderRepos, cleanReposList } from './repos.js';
+import { showSpinner, hideSpinner } from './spinner.js';
 
-
-
-
-
-const defultUsr = {
+const defaultUser = {
     avatar_url: 'https://avatars3.githubusercontent.com/u10001',
     name: '',
     location: '',
-};
-
-renderUserData(defultUsr);
+}
+renderUserData(defaultUser);
 
 const showUserBtnElem = document.querySelector('.name-form__btn');
 const userNameInputElem = document.querySelector('.name-form__input');
+
+
 
 
 const onSearchUser = async() => {
@@ -28,11 +25,11 @@ const onSearchUser = async() => {
         renderUserData(userData);
         const reposList = await fetchRepositories(userData.repos_url);
         renderRepos(reposList);
-    } catch (err) {
-        alert(err.message);
+    } catch (e) {
+        alert(e.message);
     } finally {
         hideSpinner();
     }
 };
 
-showUserBtnElem.addEventListener('click', onSerchUser);
+showUserBtnElem.addEventListener('click', onSearchUser);
