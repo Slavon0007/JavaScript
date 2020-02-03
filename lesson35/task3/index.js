@@ -24,9 +24,9 @@ const onSerchUser = () => {
     cleanRepoList();
     const userName = userNameInputElem.value;
     fetchUserData(userName)
-        .then(uerData => {
-            renderUserData(userData);
-            return userData.repos_url;
+        .then(data => {
+            renderUserData(data);
+            return data.repos_url;
         })
         .then(url => fetchRepositories(url))
         .then(reposList => {
